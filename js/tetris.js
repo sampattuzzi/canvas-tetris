@@ -19,7 +19,7 @@ var shapes = [
       1, 1, 1 ]
 ];
 var colors = [
-    'cyan', 'red'
+    "rgba(225,255,255,255)", "rgba(255,225,255,255)"
 ];
 
 var speed = 300;
