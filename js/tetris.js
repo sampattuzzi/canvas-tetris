@@ -19,8 +19,10 @@ var shapes = [
       1, 1, 1 ]
 ];
 var colors = [
-    'cyan', 'orange', 'blue', 'yellow', 'red', 'green', 'purple'
+    'cyan', 'red'
 ];
+
+var speed = 300;
 
 function newShape() {
     var id = Math.floor( Math.random() * shapes.length );
@@ -32,7 +34,7 @@ function newShape() {
         for ( var x = 0; x < 4; ++x ) {
             var i = 4 * y + x;
             if ( typeof shape[ i ] != 'undefined' && shape[ i ] ) {
-                current[ y ][ x ] = id + 1;
+                current[ y ][ x ] = 1;
             }
             else {
                 current[ y ][ x ] = 0;
@@ -62,7 +64,7 @@ function tick() {
         if (lose) {
             newGame();
             return false;
-        }    
+        }
         newShape();
     }
 }
@@ -71,7 +73,7 @@ function freeze() {
     for ( var y = 0; y < 4; ++y ) {
         for ( var x = 0; x < 4; ++x ) {
             if ( current[ y ][ x ] ) {
-                board[ y + currentY ][ x + currentX ] = current[ y ][ x ];
+                board[ y + currentY ][ x + currentX ] = current[ y ][ x ] + 1;
             }
         }
     }
@@ -167,7 +169,7 @@ function newGame() {
     init();
     newShape();
     lose = false;
-    interval = setInterval( tick, 250 );
+    interval = setInterval( tick, speed );
 }
 
 newGame();
